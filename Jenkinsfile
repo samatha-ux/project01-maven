@@ -18,10 +18,13 @@ pipeline {
             }
         }
         stage('Artifact in s3') {
-            steps {
-                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', file: 'target/*.war'
-            }
-        }
+    steps {
+        s3Upload(
+            bucket: 'amazone-s3-bucket-123',
+            file: 'target/*.war'
+        )
+    }
+}
     }
 }
        
