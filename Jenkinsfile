@@ -2,30 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('git checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/sthita933/project01-maven.git'
             }
         }
-        stage('Build') {
+         stage('Compilitation') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+         stage('Testing') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
+         stage('Pacakge') {
             steps {
                 sh 'mvn clean package'
             }
         }
-        
-        stage('Artifact in s3') {
-    steps {
-        s3Upload(
-            bucket: 'amazone-s3-bucket-123',
-            file: 'target/my-webapp.war'
-        )
-    }
-}
- stage('Deploye') {
+         stage('Deploy') {
             steps {
-                sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
+                sh 'sudo cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
             }
         }
     }
 }
-       
