@@ -21,7 +21,7 @@ pipeline {
     steps {
         s3Upload(
             bucket: 'amazone-s3-bucket-123',
-            file: 'target/*.war'
+            file: 'target/my-webapp-1.0-SNAPSHOT.war'
         )
     }
 }
