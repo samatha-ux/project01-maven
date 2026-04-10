@@ -14,7 +14,7 @@ pipeline {
         }
          stage('Deploye') {
             steps {
-                sh 'sudo cp target/*.war tomcat/webapps/'
+                sh 'sudo cp target/*.war apache-tomcat-9.0.117/webapps/'
             }
         }
     }
