@@ -24,7 +24,7 @@ pipeline {
         }
          stage('Deploying code ') {
             steps {
-                sh 'cp target/*.war /home/ubuntu/ tomcat/webapps/'
+                sh 'cp target/my-webapp.war /home/ubuntu/ tomcat/webapps/'
             }
         }
     }
